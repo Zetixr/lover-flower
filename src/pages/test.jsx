@@ -1,31 +1,45 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import notFoundBg from '../assets/errorFlowers.png' // Твоя картинка с цветком и ветками
+
+// Импортируем картинку (цветок со стеблем или цветок-ноль)
+import fourZeroFourFlowers from '../assets/four-zero-four-flowers.png'
+// Если у тебя другой файл фоновых цветов, например errorFlowers.png, расскоментируй:
+// import errorFlowers from '../assets/errorFlowers.png'
+
+import '../App.css'
 
 const NotFound = () => {
   return (
     <div className="not-found-page">
-      {/* Синее подсветка-свечение справа на фоне */}
-      <div className="glow-effect"></div>
+      {/* Декоративный крупный цветок слева / по центру */}
+      <img
+        src={fourZeroFourFlowers}
+        alt="Lover Flower 404"
+        className="not-found-bg-flower"
+      />
 
-      {/* Огромные цифры 404 по центру */}
-      <div className="not-found-code">404</div>
+      <div className="not-found-container">
+        {/* Композиция 404: 4 + Цветок-ноль + 4 */}
+        <div className="not-found-code">
+          <span className="digit">4</span>
+          <div className="flower-zero-placeholder">
+            {/* Если цветок не входит в единое изображение, он позиционируется здесь */}
+          </div>
+          <span className="digit">4</span>
+        </div>
 
-      {/* Картинка с цветком и ветками, которая перекрывает 404 */}
-      <div className="not-found-image-wrap">
-        <img src={notFoundBg} alt="404 Flowers" className="not-found-img" />
-      </div>
+        {/* Текстовый блок и кнопка */}
+        <div className="not-found-content">
+          <span className="error-tag">ОШИБКА 404</span>
+          <h1 className="error-title">УПС... ТАКОЙ СТРАНИЦЫ НЕТ</h1>
+          
+          <Link to="/" className="not-found-btn">
+            НА ГЛАВНУЮ
+          </Link>
+        </div>
 
-      {/* Рукописный надпись-водяной знак справа */}
-      <div className="handwritten-watermark">Lover Flower</div>
-
-      {/* Блок с текстом и кнопкой снизу справа */}
-      <div className="not-found-content">
-        <span className="error-subtitle">ОШИБКА 404</span>
-        <h1 className="error-title">УПС... ТАКОЙ СТРАНИЦЫ НЕТ</h1>
-        <Link to="/" className="not-found-btn">
-          НА ГЛАВНУЮ
-        </Link>
+        {/* Водяной знак */}
+        <div className="not-found-watermark">Lover Flower</div>
       </div>
     </div>
   )

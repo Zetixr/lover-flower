@@ -19,13 +19,13 @@ const NavBar = () => {
           <img src={logo} alt="Lover Flower" />
         </Link>
 
-        {/* Навигация по всем блокам кроме первого */}
+        {/* Навигация */}
         <nav className="navbar-nav">
-          <a href={getAnchor('#catalog')}>КАТАЛОГ</a>
-          <a href={getAnchor('#delivery')}>ДОСТАВКА И ОПЛАТА</a>
-          <a href={getAnchor('#about')}>О НАС</a>
-          <a href={getAnchor('#contacts')}>КОНТАКТЫ</a>
-          <a href={getAnchor('#faq')}>FAQ</a>
+          <Link to="/catalog">КАТАЛОГ</Link>
+          <Link to="/delivery">ДОСТАВКА И ОПЛАТА</Link>
+          <Link to="/about">О НАС</Link>
+          <Link to="/contacts">КОНТАКТЫ</Link>
+          <Link to="/faq">FAQ</Link>
         </nav>
 
         <div className="navbar-right">

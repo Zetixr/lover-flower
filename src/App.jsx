@@ -10,6 +10,10 @@ import Footer from './components/footer'
 import Home from './pages/Home'
 import Orders from './pages/orders'
 import NotFound from './pages/test'
+import Delivery from './pages/Delivery'
+import About from './pages/About'
+import Contacts from './pages/Contacts'
+import Faq from './pages/Faq'
 
 function App() {
   return (
@@ -23,6 +27,10 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/orders" element={<Orders />} />
           <Route path="*" element={<NotFound />} />
+          <Route path="/delivery" element={<Delivery />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contacts" element={<Contacts />} />
+          <Route path="/faq" element={<Faq />} />
         </Routes>
 
         {/* Подвал отображается на всех страницах */}
