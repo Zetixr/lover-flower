@@ -20,113 +20,180 @@ body {
   font-family: 'Montserrat', sans-serif;
 }
 
-.navbar-container {
+/* ==========================================
+   НАВИГАЦИЯ (NAVBAR)
+   ========================================== */
+
+/* Главная обертка шапки */
+.navbar-header {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  background-color: #051418;
-  padding: 15px 40px;
-  position: relative;
-  z-index: 10;
+  z-index: 1000;
+  background: transparent;
+  padding: 25px 0;
 }
 
-.navbar {
+/* Контейнер выравнивания элементов в одну линию */
+.navbar-container {
   max-width: 1200px;
   margin: 0 auto;
+  padding: 0 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
 /* Логотип */
+.navbar-logo {
+  display: flex;
+  align-items: center;
+}
+
 .navbar-logo img {
   height: 40px;
-  display: block;
+  width: auto;
+  object-fit: contain;
 }
 
-/* Навигационные ссылки */
-.navbar-menu {
+/* Навигационное меню (ссылки) */
+.navbar-nav {
   display: flex;
-  gap: 25px;
+  align-items: center;
+  gap: 35px;
 }
 
-.nav-link {
+.navbar-nav a {
   color: #ffffff;
-  text-decoration: none;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 500;
-  letter-spacing: 1px;
+  letter-spacing: 0.1em;
+  text-decoration: none;
   text-transform: uppercase;
-  transition: color 0.2s ease;
+  transition: color 0.3s ease, opacity 0.3s ease;
 }
 
-.nav-link:hover {
+.navbar-nav a:hover {
   color: #43e2bc;
 }
 
-/* Блок действия справа */
-.navbar-actions {
+/* Правая блок-секция (поиск, телефон, корзина) */
+.navbar-right {
   display: flex;
   align-items: center;
   gap: 25px;
 }
 
-/* Кнопка Поиска */
-.search-btn {
-  background: transparent;
+/* Кнопка "ПОИСК" */
+.nav-icon-btn {
+  background: none;
   border: none;
-  color: #ffffff;
   display: flex;
   align-items: center;
   gap: 8px;
   cursor: pointer;
-  font-size: 13px;
-  letter-spacing: 1px;
+  color: #ffffff;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0;
+  transition: opacity 0.3s ease;
 }
 
-/* Телефон */
-.phone-link {
-  color: #43e2bc;
-  text-decoration: none;
+.nav-icon-btn img {
+  width: 16px;
+  height: 16px;
+}
+
+.nav-icon-btn:hover {
+  opacity: 0.8;
+}
+
+/* Ссылка на телефон */
+.nav-phone-link {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 14px;
-  font-weight: bold;
+  color: #ffffff;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  transition: color 0.3s ease;
 }
 
-.icon {
+.nav-phone-link img {
   width: 16px;
   height: 16px;
-  object-fit: contain;
 }
 
-/* Корзина с индикатором количества */
-.cart-container {
+.nav-phone-link:hover {
+  color: #43e2bc;
+}
+
+/* Иконка корзины с бэйджем */
+.nav-cart-btn {
   position: relative;
   display: flex;
   align-items: center;
-  cursor: pointer;
+  justify-content: center;
+  text-decoration: none;
+  transition: transform 0.2s ease;
 }
 
-.cart-icon {
-  width: 28px;
-  height: 28px;
-  object-fit: contain;
+.nav-cart-btn img {
+  width: 22px;
+  height: 22px;
 }
 
+.nav-cart-btn:hover {
+  transform: scale(1.05);
+}
+
+/* Бэйдж с количеством товаров */
 .cart-badge {
   position: absolute;
-  top: -4px;
+  top: -6px;
   right: -8px;
   background-color: #43e2bc;
   color: #000000;
-  font-size: 11px;
-  font-weight: bold;
+  font-size: 10px;
+  font-weight: 700;
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
-  width: 18px;
-  height: 18px;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+/* Адаптив для планшетов и мобильных */
+@media (max-width: 992px) {
+  .navbar-nav {
+    gap: 20px;
+  }
+  
+  .navbar-nav a {
+    font-size: 10px;
+  }
+  
+  .navbar-right {
+    gap: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar-container {
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+  
+  .navbar-nav {
+    order: 3;
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
 }
 
 /* ==========================================
@@ -1487,6 +1554,776 @@ div:has(> .flowers-hands) > p {
 
   .catalog-btn, .special-btn, .form-submit-btn {
     width: 100%;
+    text-align: center;
+  }
+}
+/* ==========================================
+   ЭКРАНЫ РЕЗУЛЬТАТА (УСПЕХ / ОШИБКА)
+   ========================================== */
+
+.order-result-page {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  position: relative;
+}
+
+.order-result-container {
+  max-width: 1200px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  position: relative;
+}
+
+.order-result-content {
+  flex: 1;
+  max-width: 550px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Заголовки */
+.result-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 54px;
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: 0.04em;
+  color: #ffffff;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+}
+
+.error-title {
+  color: #ffffff;
+}
+
+/* Описание */
+.result-info {
+  margin-bottom: 40px;
+}
+
+.order-num {
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+  margin-bottom: 12px;
+}
+
+.order-num span {
+  color: #43e2bc;
+  font-weight: 700;
+}
+
+.order-desc {
+  font-size: 12px;
+  color: #9a9a9a;
+  line-height: 1.6;
+  letter-spacing: 0.04em;
+}
+
+.error-reason {
+  font-size: 14px;
+  color: #ff6b6b;
+  margin-bottom: 10px;
+}
+
+/* Кнопки */
+.result-btn {
+  display: inline-block;
+  padding: 16px 45px;
+  background-color: #43e2bc;
+  color: #000000;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+}
+
+.result-btn:hover {
+  background-color: #ffffff;
+  box-shadow: 0 0 15px rgba(67, 226, 188, 0.4);
+}
+
+.error-btn {
+  background-color: #d64545;
+  color: #ffffff;
+}
+
+.error-btn:hover {
+  background-color: #ff5555;
+  box-shadow: 0 0 15px rgba(214, 69, 69, 0.4);
+}
+
+/* Водяной знак Lover Flower в фоне */
+.watermark-text {
+  position: absolute;
+  left: 0;
+  bottom: -40px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 60px;
+  color: rgba(255, 255, 255, 0.05);
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+/* Правая сторона с фото цветка */
+.order-result-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.order-result-image img {
+  max-width: 500px;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.5));
+}
+
+@media (max-width: 992px) {
+  .order-result-container {
+    flex-direction: column;
+    text-align: center;
+  }
+  .order-result-content {
+    max-width: 100%;
+  }
+}/* ==========================================
+   СТРАНИЦА 404 — СБАЛАНСИРОВАННЫЙ МАСШТАБ
+   ========================================== */
+
+.not-found-page {
+  position: relative;
+  width: 100%;
+  /* Фиксируем высоту по экрану, чтобы страница не растягивалась */
+  height: calc(100vh - 120px); 
+  min-height: 550px;
+  max-height: 750px;
+  background-color: #04080f;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 0 8% 60px 0;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* Синее мягкое свечение справа */
+.glow-effect {
+  position: absolute;
+  top: 0;
+  right: -5%;
+  width: 500px;
+  height: 100%;
+  background: radial-gradient(circle at right center, rgba(23, 62, 115, 0.5) 0%, rgba(4, 8, 15, 0) 70%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Цифры 404 — аккуратный адекватный размер */
+.not-found-code {
+  position: absolute;
+  top: 45%;
+  left: 28%;
+  transform: translate(-50%, -50%);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 260px; /* Уменьшили с 38vw до комфортных 260px */
+  font-weight: 300;
+  line-height: 0.8;
+  color: #7b9cc4;
+  opacity: 0.85;
+  letter-spacing: -0.02em;
+  user-select: none;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Цветы и ветки аккуратного масштаба */
+.not-found-image-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.not-found-img {
+  width: auto;
+  height: 110%; /* Легкий запас по высоте */
+  max-width: 65%;
+  object-fit: contain;
+  object-position: left center;
+}
+
+/* Рукописная надпись справа вверху */
+.handwritten-watermark {
+  position: absolute;
+  top: 28%;
+  right: 15%;
+  font-family: 'Alex Brush', 'Cormorant Garamond', cursive, serif;
+  font-size: 42px;
+  color: rgba(123, 156, 196, 0.35);
+  transform: rotate(-8deg);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Блок текста и кнопки — справа внизу */
+.not-found-content {
+  position: relative;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 280px;
+}
+
+.error-subtitle {
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: #ffffff;
+  opacity: 0.7;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.error-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: #ffffff;
+  margin: 0 0 20px 0;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+/* Зеленая кнопка */
+.not-found-btn {
+  display: inline-block;
+  padding: 12px 28px;
+  background-color: #43e2bc;
+  color: #000000;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.not-found-btn:hover {
+  background-color: #ffffff;
+  box-shadow: 0 0 20px rgba(67, 226, 188, 0.6);
+  transform: translateY(-2px);
+}
+
+/* Адаптив для планшетов/экранов поменьше */
+@media (max-width: 1200px) {
+  .not-found-code {
+    font-size: 200px;
+    left: 25%;
+  }
+}
+
+@media (max-width: 992px) {
+  .not-found-page {
+    height: auto;
+    min-height: 500px;
+    justify-content: center;
+    align-items: flex-end;
+    padding: 0 20px 40px 20px;
+  }
+
+  .not-found-code {
+    font-size: 160px;
+    left: 50%;
+    top: 35%;
+  }
+
+  .not-found-img {
+    max-width: 90%;
+    height: 90%;
+  }
+
+  .not-found-content {
+    align-items: center;
+    text-align: center;
+  }
+
+  .handwritten-watermark {
+    display: none;
+  }
+}
+/* ==========================================
+   СТРАНИЦА ОФОРМЛЕНИЯ ЗАКАЗА (ORDERS.CSS)
+   ========================================== */
+
+.order-page {
+  position: relative;
+  min-height: 100vh;
+  background-color: #040a08;
+  color: #ffffff;
+  padding: 120px 20px 80px 20px;
+  overflow: hidden;
+}
+
+/* Декоративные цветы на фоне */
+.order-flowers-bg {
+  position: absolute;
+  top: 50px;
+  right: -50px;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.order-flowers-bg img {
+  max-width: 600px;
+  height: auto;
+}
+
+.order-container {
+  max-width: 1140px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+/* Хлебные крошки */
+.breadcrumbs {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: #666666;
+  margin-bottom: 25px;
+  text-transform: uppercase;
+}
+
+.breadcrumbs span {
+  color: #43e2bc;
+}
+
+/* Заголовок страницы с водяным знаком */
+.order-header-title {
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.order-header-title h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 50px;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.order-watermark {
+  position: absolute;
+  left: 0;
+  top: -20px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 90px;
+  color: rgba(255, 255, 255, 0.03);
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.order-section-subtitle {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #43e2bc;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+}
+
+/* Разметка формы (две колонки) */
+.order-content {
+  display: flex;
+  justify-content: space-between;
+  gap: 60px;
+}
+
+.order-form-left {
+  flex: 1;
+  max-width: 650px;
+}
+
+/* Заголовки блоков (КОНТАКТНЫЕ ДАННЫЕ, ДОСТАВКА, ОПЛАТА) */
+.form-group-title {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #43e2bc;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+/* Поля ввода (Inputs & Selects) */
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.form-field label {
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  color: #9a9a9a;
+  text-transform: uppercase;
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0;
+  padding: 14px 16px;
+  color: #ffffff;
+  font-size: 13px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+  border-color: #43e2bc;
+}
+
+.form-field input::placeholder,
+.form-field textarea::placeholder {
+  color: #555555;
+}
+
+.form-field select {
+  cursor: pointer;
+  appearance: none;
+  background-color: #040a08;
+}
+
+/* Ряд из трех полей (Корп, Дом, Кв) */
+.form-row-three {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 15px;
+}
+
+/* Кастомные Радио-кнопки */
+.radio-group,
+.radio-group-vertical {
+  display: flex;
+  gap: 25px;
+  margin-bottom: 25px;
+}
+
+.radio-group-vertical {
+  flex-direction: column;
+  gap: 15px;
+}
+
+.radio-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: #ffffff;
+}
+
+.radio-label input[type='radio'] {
+  display: none;
+}
+
+.radio-custom {
+  width: 16px;
+  height: 16px;
+  border: 1px solid #43e2bc;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+}
+
+.radio-label input[type='radio']:checked + .radio-custom::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 8px;
+  height: 8px;
+  background-color: #43e2bc;
+  border-radius: 50%;
+}
+
+/* Блок промокода */
+.promocode-block {
+  display: flex;
+  gap: 10px;
+  margin: 30px 0 40px 0;
+}
+
+.promocode-input {
+  flex: 1;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 12px 16px;
+  color: #ffffff;
+  font-size: 12px;
+  outline: none;
+}
+
+.promocode-btn {
+  background: transparent;
+  border: 1px solid #43e2bc;
+  color: #43e2bc;
+  padding: 12px 25px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.promocode-btn:hover {
+  background: #43e2bc;
+  color: #000000;
+}
+
+/* Нижняя итоговая сумма и кнопка "К ОПЛАТЕ" */
+.order-bottom-summary {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 25px;
+}
+
+.total-price-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.total-label {
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.total-amount {
+  font-size: 22px;
+  font-weight: 700;
+  color: #43e2bc;
+}
+
+.delivery-note {
+  font-size: 10px;
+  color: #777777;
+  letter-spacing: 0.05em;
+  margin-bottom: 25px;
+}
+
+.order-submit-btn {
+  width: 100%;
+  padding: 18px;
+  background-color: #43e2bc;
+  color: #000000;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  border: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.order-submit-btn:hover {
+  background-color: #ffffff;
+  box-shadow: 0 0 20px rgba(67, 226, 188, 0.4);
+}
+
+/* Правый плавающий блок (ВАШ ЗАКАЗ) */
+.order-summary-box {
+  flex: 0 0 350px;
+  background-color: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 30px;
+  height: fit-content;
+}
+
+.order-items-list {
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 15px;
+}
+
+.order-item {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+.order-item-title {
+  color: #cccccc;
+}
+
+.order-item-price {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.order-subtotal {
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  color: #888888;
+  display: flex;
+  justify-content: space-between;
+}
+
+.order-subtotal span {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+/* ==========================================
+   ЭКРАНЫ РЕЗУЛЬТАТА (УСПЕХ / ОШИБКА)
+   ========================================== */
+
+.order-result-page {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px;
+  background-color: #040a08;
+}
+
+.order-result-container {
+  max-width: 1100px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 50px;
+}
+
+.order-result-content {
+  flex: 1;
+  max-width: 500px;
+  position: relative;
+}
+
+.result-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 52px;
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: 0.04em;
+  color: #ffffff;
+  margin-bottom: 25px;
+  text-transform: uppercase;
+}
+
+.result-info {
+  margin-bottom: 35px;
+}
+
+.order-num {
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.order-num span {
+  color: #43e2bc;
+  font-weight: 700;
+}
+
+.order-desc {
+  font-size: 12px;
+  color: #888888;
+  line-height: 1.6;
+}
+
+.error-reason {
+  font-size: 14px;
+  color: #ff5555;
+  margin-bottom: 10px;
+}
+
+.result-btn {
+  display: inline-block;
+  padding: 16px 40px;
+  background-color: #43e2bc;
+  color: #000000;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+}
+
+.result-btn:hover {
+  background-color: #ffffff;
+  box-shadow: 0 0 15px rgba(67, 226, 188, 0.4);
+}
+
+.error-btn {
+  background-color: #e54b4b;
+  color: #ffffff;
+}
+
+.error-btn:hover {
+  background-color: #ff6666;
+  box-shadow: 0 0 15px rgba(229, 75, 75, 0.4);
+}
+
+.order-result-image img {
+  max-width: 480px;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.6));
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 992px) {
+  .order-content {
+    flex-direction: column;
+  }
+  
+  .order-summary-box {
+    width: 100%;
+    flex: auto;
+  }
+
+  .order-result-container {
+    flex-direction: column;
     text-align: center;
   }
 }
