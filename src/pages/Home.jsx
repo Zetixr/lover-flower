@@ -1,6 +1,6 @@
 import React from 'react'
 import Hero from './hero'
-import Catalog from './catalog'
+import Catalog from './Catalog'
 import Popular from './popular'
 import OrderSteps from './orderSteps'
 import SpecialOccasion from './specialOcassion'

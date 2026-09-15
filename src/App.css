@@ -3195,3 +3195,261 @@ div:has(> .flowers-hands) > p {
     padding: 0 20px 20px 20px;
   }
 }
+/* ==========================================
+   СТРАНИЦА КАТАЛОГ (CATALOG.CSS)
+   ========================================== */
+
+.catalog-page {
+  min-height: 100vh;
+  background-color: #04080f;
+  color: #ffffff;
+  padding: 120px 20px 100px 20px;
+}
+
+.catalog-container {
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+/* Хлебные крошки */
+.breadcrumbs {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: #666666;
+  margin-bottom: 25px;
+  text-transform: uppercase;
+}
+
+.breadcrumbs a {
+  color: #666666;
+  text-decoration: none;
+}
+
+.breadcrumbs span {
+  color: #43e2bc;
+}
+
+/* Верхний баннер */
+.catalog-hero-section {
+  margin-bottom: 60px;
+}
+
+.catalog-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 64px;
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: 0.05em;
+  margin: 0 0 15px 0;
+  text-transform: uppercase;
+}
+
+.catalog-subtitle {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  color: #888888;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+}
+
+/* Теги карусели/кнопки */
+.tags-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  max-width: 850px;
+}
+
+.tag-btn {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #cccccc;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+}
+
+.tag-btn:hover,
+.tag-btn.active {
+  border-color: #43e2bc;
+  color: #43e2bc;
+  background: rgba(67, 226, 188, 0.05);
+}
+
+/* Основной блок: сайдбар + карточки */
+.catalog-main {
+  display: flex;
+  gap: 40px;
+}
+
+/* Сайдбар */
+.catalog-sidebar {
+  flex: 0 0 220px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.filter-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #43e2bc;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+
+.filter-group ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.filter-group label {
+  font-size: 11px;
+  color: #aaaaaa;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.filter-group input[type='checkbox'] {
+  accent-color: #43e2bc;
+}
+
+.price-inputs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.price-inputs input {
+  width: 70px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 6px 10px;
+  color: #fff;
+  font-size: 11px;
+  outline: none;
+}
+
+/* Сетка товаров */
+.catalog-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+.catalog-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+}
+
+.card-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 280px;
+  overflow: hidden;
+}
+
+.card-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px;
+  font-weight: 700;
+  color: #000;
+}
+
+.card-badge.sale {
+  background-color: #43e2bc;
+}
+
+.card-badge.new {
+  background-color: #e54b83;
+  color: #fff;
+}
+
+.card-info {
+  padding: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.card-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  margin: 0 0 10px 0;
+}
+
+.card-price {
+  font-size: 13px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 15px;
+}
+
+.add-to-cart-btn {
+  width: 100%;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  padding: 10px 0;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: auto;
+}
+
+.add-to-cart-btn:hover {
+  background-color: #43e2bc;
+  border-color: #43e2bc;
+  color: #000000;
+}
+
+/* Адаптив */
+@media (max-width: 992px) {
+  .catalog-main {
+    flex-direction: column;
+  }
+
+  .catalog-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 576px) {
+  .catalog-grid {
+    grid-template-columns: 1fr;
+  }
+}

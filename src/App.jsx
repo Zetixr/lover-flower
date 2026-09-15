@@ -14,6 +14,7 @@ import Delivery from './pages/Delivery'
 import About from './pages/About'
 import Contacts from './pages/Contacts'
 import Faq from './pages/Faq'
+import Catalog from './pages/Catalog'
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         {/* Маршрутизация страниц */}
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/catalog" element={<Catalog/>}/>
           <Route path="/orders" element={<Orders />} />
           <Route path="*" element={<NotFound />} />
           <Route path="/delivery" element={<Delivery />} />
