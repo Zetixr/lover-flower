@@ -1706,13 +1706,12 @@ div:has(> .flowers-hands) > p {
    ========================================== */
 
 /* ==========================================
-   СТРАНИЦА 404 (NOT FOUND)
+   СТРАНИЦА 404 (NOTFOUND.CSS)
    ========================================== */
 
 .not-found-page {
   position: relative;
-  width: 100%;
-  min-height: calc(100vh - 120px); /* Вычитаем высоту хедера/футера */
+  min-height: calc(100vh - 80px); /* Учитываем высоту хедера */
   background-color: #04080f;
   color: #ffffff;
   display: flex;
@@ -1720,141 +1719,144 @@ div:has(> .flowers-hands) > p {
   justify-content: center;
   padding: 100px 20px 80px 20px;
   overflow: hidden;
-  box-sizing: border-box;
 }
 
-/* Декоративные ветки/цветок слева */
-.not-found-bg-flower {
+/* Декоративный цветок слева */
+.nf-flower {
   position: absolute;
+  left: -50px;
   top: 50%;
-  left: 5%;
   transform: translateY(-50%);
-  max-width: 550px;
-  width: 45vw;
+  width: 480px;
+  opacity: 0.55;
   pointer-events: none;
   z-index: 1;
-  opacity: 0.9;
+  filter: drop-shadow(0 0 30px rgba(67, 226, 188, 0.15));
 }
 
-/* Основной контейнер по центру */
-.not-found-container {
+/* Огромный фоновый текст LOVER FLOWER */
+.nf-bg-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(80px, 12vw, 180px);
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.02);
+  white-space: nowrap;
+  letter-spacing: 0.1em;
+  pointer-events: none;
+  user-select: none;
+  z-index: 1;
+}
+
+/* Основной контейнер */
+.nf-container {
   position: relative;
   z-index: 2;
   display: flex;
-  flex-direction: column;
-  align-items: flex-end; /* Контент справа от цветка по макету */
-  justify-content: center;
-  width: 100%;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
-/* Блок с цифрами 404 */
-.not-found-code {
-  display: flex;
   align-items: center;
-  gap: 10px;
+  justify-content: center;
+  gap: 60px;
+  max-width: 1000px;
+  width: 100%;
+}
+
+/* Выразительный код 404 */
+.nf-code-wrapper {
+  position: relative;
+}
+
+.nf-code {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 160px;
+  font-size: clamp(120px, 16vw, 220px);
   font-weight: 300;
-  line-height: 1;
-  color: rgba(255, 255, 255, 0.25);
-  margin-bottom: 20px;
+  line-height: 0.8;
+  color: rgba(67, 226, 188, 0.25);
+  background: linear-gradient(180deg, #43e2bc 0%, rgba(67, 226, 188, 0.1) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 50px rgba(67, 226, 188, 0.2);
+  display: block;
 }
 
-.digit {
-  font-family: 'Cormorant Garamond', serif;
-  color: #43e2bc; /* Мятный/зеленый со свечением */
-  opacity: 0.6;
-}
-
-/* Блок текста под ошибкой */
-.not-found-content {
+/* Правый блок с описанием */
+.nf-content {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  max-width: 400px;
+  max-width: 450px;
 }
 
-.error-tag {
+.nf-badge {
+  font-size: 11px;
+  letter-spacing: 0.2em;
   color: #e54b83;
+  font-weight: 600;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+
+.nf-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: 0.04em;
+  margin: 0 0 16px 0;
+  text-transform: uppercase;
+}
+
+.nf-description {
+  font-size: 12px;
+  line-height: 1.8;
+  color: #8a8f99;
+  letter-spacing: 0.05em;
+  margin-bottom: 32px;
+}
+
+/* Стильная кнопка в общей концепции */
+.nf-button {
+  display: inline-block;
+  padding: 16px 42px;
+  background: transparent;
+  border: 1px solid #43e2bc;
+  color: #43e2bc;
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.15em;
-  margin-bottom: 10px;
-  text-transform: uppercase;
-}
-
-.error-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 28px;
-  font-weight: 400;
-  letter-spacing: 0.05em;
-  color: #ffffff;
-  margin: 0 0 30px 0;
-  text-transform: uppercase;
-  line-height: 1.2;
-}
-
-/* Мятная кнопка "НА ГЛАВНУЮ" */
-.not-found-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #43e2bc;
-  color: #000000;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  padding: 16px 45px;
   text-decoration: none;
   text-transform: uppercase;
-  border: none;
   transition: all 0.3s ease;
-  cursor: pointer;
+  position: relative;
+  box-shadow: 0 0 15px rgba(67, 226, 188, 0.15);
 }
 
-.not-found-btn:hover {
-  background-color: #36c7a4;
-  box-shadow: 0 0 15px rgba(67, 226, 188, 0.4);
+.nf-button:hover {
+  background: #43e2bc;
+  color: #000000;
+  box-shadow: 0 0 25px rgba(67, 226, 188, 0.4);
+  transform: translateY(-2px);
 }
 
-/* Водяной знак */
-.not-found-watermark {
-  position: absolute;
-  top: 20%;
-  right: 5%;
-  font-family: 'Alex Brush', 'Cormorant Garamond', cursive, serif;
-  font-size: 90px;
-  color: rgba(255, 255, 255, 0.03);
-  pointer-events: none;
-  user-select: none;
-}
-
-/* Мобильная адаптация */
-@media (max-width: 768px) {
-  .not-found-container {
-    align-items: center;
+/* Адаптив */
+@media (max-width: 900px) {
+  .nf-container {
+    flex-direction: column;
     text-align: center;
+    gap: 20px;
   }
 
-  .not-found-bg-flower {
-    opacity: 0.25;
-    width: 80vw;
+  .nf-content {
+    align-items: center;
+  }
+
+  .nf-flower {
+    opacity: 0.2;
     left: 50%;
     transform: translate(-50%, -50%);
-  }
-
-  .not-found-content {
-    align-items: center;
-  }
-
-  .not-found-code {
-    font-size: 100px;
-  }
-
-  .error-title {
-    font-size: 22px;
+    width: 320px;
   }
 }
 /* ==========================================
